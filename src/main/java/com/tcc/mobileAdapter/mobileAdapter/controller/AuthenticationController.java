@@ -8,12 +8,14 @@ import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.CreateUser
 import com.tcc.mobileAdapter.mobileAdapter.translator.Translator;
 import com.tcc.mobileAdapter.mobileAdapter.usecase.AuthenticationUseCase;
 import com.tcc.mobileAdapter.mobileAdapter.usecase.CreateUserUseCase;
+import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@Data
 @RequiredArgsConstructor
 public class AuthenticationController implements Authentication {
 
@@ -28,6 +30,13 @@ public class AuthenticationController implements Authentication {
 
     @Override
     public ResponseEntity<CreateUserResponse> execute(CreateUserRequest createUserRequest) {
-        return new ResponseEntity<>(Translator.translate(createUserUseCase.execute(createUserRequest), CreateUserResponse.class), HttpStatus.OK);
+        try {
+            createUserUseCase.execute(createUserRequest);
+        } catch (Exception e) {
+
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

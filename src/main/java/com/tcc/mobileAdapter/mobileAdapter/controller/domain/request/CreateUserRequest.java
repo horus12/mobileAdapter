@@ -1,23 +1,23 @@
 package com.tcc.mobileAdapter.mobileAdapter.controller.domain.request;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
+import lombok.NonNull;
 
 @Data
 public class CreateUserRequest {
 
-    @NotNull
+    @NonNull
     private String cpf;
 
-    @NotNull
+    @NonNull
     private String password;
 
-    @NotNull
+    @NonNull
     private String userName;
 
-    @NotNull
+    @NonNull
     private String email;
 
-    @NotNull
+    @NonNull
     private String contact;
 }
