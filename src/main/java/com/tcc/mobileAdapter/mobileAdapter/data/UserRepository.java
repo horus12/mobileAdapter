@@ -8,7 +8,7 @@ public interface UserRepository {
 
     User save(final User user);
 
-    Optional<User> findByCpf(String cpf);
+    User findByCpf(String cpf);
 
     Optional<User> findByUserName(String name);
 
