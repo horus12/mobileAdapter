@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @RequestMapping("/auth")
-@CrossOrigin
 public interface Authentication {
 
     @PostMapping("/login")
