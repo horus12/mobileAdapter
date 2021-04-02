@@ -1,8 +1,7 @@
 package com.tcc.mobileAdapter.mobileAdapter.usecase;
 
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateUserRequest;
-import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.CreateUserResponse;
-import com.tcc.mobileAdapter.mobileAdapter.data.UserRepository;
+import com.tcc.mobileAdapter.mobileAdapter.data.user.UserRepository;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 import com.tcc.mobileAdapter.mobileAdapter.exception.UserAlreadyExistException;
 import lombok.RequiredArgsConstructor;

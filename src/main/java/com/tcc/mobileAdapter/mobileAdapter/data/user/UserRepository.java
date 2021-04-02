@@ -1,4 +1,4 @@
-package com.tcc.mobileAdapter.mobileAdapter.data;
+package com.tcc.mobileAdapter.mobileAdapter.data.user;
 
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 

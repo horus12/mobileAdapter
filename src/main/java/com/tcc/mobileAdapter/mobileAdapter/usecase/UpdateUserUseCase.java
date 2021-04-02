@@ -1,7 +1,7 @@
 package com.tcc.mobileAdapter.mobileAdapter.usecase;
 
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.UpdateUserRequest;
-import com.tcc.mobileAdapter.mobileAdapter.data.UserRepository;
+import com.tcc.mobileAdapter.mobileAdapter.data.user.UserRepository;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
