@@ -1,9 +1,6 @@
 package com.tcc.mobileAdapter.mobileAdapter.controller.domain.request;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
@@ -11,6 +8,9 @@ import lombok.Setter;
 @NoArgsConstructor
 public class AuthRequest {
 
+    @NonNull
     String userName;
+
+    @NonNull
     String password;
 }

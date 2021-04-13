@@ -6,7 +6,7 @@ import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateUserR
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.AuthResponse;
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.CreateUserResponse;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
-import com.tcc.mobileAdapter.mobileAdapter.exception.UserAlreadyExistException;
+import com.tcc.mobileAdapter.mobileAdapter.exception.AlreadyExistException;
 import com.tcc.mobileAdapter.mobileAdapter.translator.Translator;
 import com.tcc.mobileAdapter.mobileAdapter.usecase.AuthenticationUseCase;
 import com.tcc.mobileAdapter.mobileAdapter.usecase.CreateUserUseCase;
@@ -51,7 +51,7 @@ public class AuthenticationController implements Authentication {
         User user;
         try {
             user = createUserUseCase.execute(createUserRequest);
-        } catch (UserAlreadyExistException e) {
+        } catch (AlreadyExistException e) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

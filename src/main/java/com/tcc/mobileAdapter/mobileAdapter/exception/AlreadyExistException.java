@@ -1,18 +1,18 @@
 package com.tcc.mobileAdapter.mobileAdapter.exception;
 
-public class UserAlreadyExistException extends Exception {
+public class AlreadyExistException extends Exception {
 
-    public UserAlreadyExistException() {
+    public AlreadyExistException() {
         super();
     }
 
 
-    public UserAlreadyExistException(String message) {
+    public AlreadyExistException(String message) {
         super(message);
     }
 
 
-    public UserAlreadyExistException(String message, Throwable cause) {
+    public AlreadyExistException(String message, Throwable cause) {
         super(message, cause);
     }
 }
