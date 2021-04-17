@@ -6,7 +6,7 @@ import lombok.NonNull;
 import java.util.List;
 
 @Data
-public class CreateProductRequest {
+public class ProductRequest {
 
     @NonNull
     private String name;

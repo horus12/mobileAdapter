@@ -1,7 +1,7 @@
-package com.tcc.mobileAdapter.mobileAdapter.usecase;
+package com.tcc.mobileAdapter.mobileAdapter.usecase.product;
 
-import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateProductRequest;
-import com.tcc.mobileAdapter.mobileAdapter.data.product.ProductRepository;
+import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.ProductRequest;
+import com.tcc.mobileAdapter.mobileAdapter.data.product.ProductMongoRepository;
 import com.tcc.mobileAdapter.mobileAdapter.domain.Product;
 import com.tcc.mobileAdapter.mobileAdapter.exception.AlreadyExistException;
 import lombok.RequiredArgsConstructor;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class CreateProductUseCase {
 
-    private final ProductRepository productRepository;
+    private final ProductMongoRepository productRepository;
 
-    public Product execute(CreateProductRequest request) throws AlreadyExistException {
+    public Product execute(ProductRequest request) throws Exception {
 
         if (productRepository.findByName(request.getName()) != null) {
             throw new AlreadyExistException("Product_already_exists");

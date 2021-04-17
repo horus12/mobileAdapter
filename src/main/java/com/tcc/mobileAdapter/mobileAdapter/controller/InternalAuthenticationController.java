@@ -4,7 +4,6 @@ import com.tcc.mobileAdapter.mobileAdapter.controller.api.InternalAuthentication
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.AuthRequest;
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.AuthResponse;
 import com.tcc.mobileAdapter.mobileAdapter.translator.Translator;
-import com.tcc.mobileAdapter.mobileAdapter.usecase.AuthenticationUseCase;
 import com.tcc.mobileAdapter.mobileAdapter.usecase.InternalAuthenticationUseCase;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;

@@ -55,6 +55,8 @@ public class AuthenticationController implements Authentication {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        } catch (Exception e) {
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         if (user != null) {
             return new ResponseEntity<>(HttpStatus.OK);

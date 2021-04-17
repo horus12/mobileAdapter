@@ -16,7 +16,7 @@ public class CreateUserUseCase {
 
     private final UserRepository userRepository;
 
-    public User execute(CreateUserRequest request) throws AlreadyExistException {
+    public User execute(CreateUserRequest request) throws Exception {
 
         Assert.hasText(request.getUserName(), "UserName should not be null or empty");
         Assert.hasText(request.getCpf(), "cpf should not be null or empty");

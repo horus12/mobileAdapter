@@ -1,11 +1,8 @@
 package com.tcc.mobileAdapter.mobileAdapter.controller.api;
 
-import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateProductRequest;
+import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.ProductRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin
@@ -13,6 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface ProductApi {
 
     @PostMapping("/createProduct")
-    ResponseEntity<? extends Object> execute(@RequestBody CreateProductRequest createProductRequest);
+    ResponseEntity<?> createProduct(@RequestBody ProductRequest productRequest);
+
+    @DeleteMapping("/deleteProduct/{productId}")
+    ResponseEntity<?> deleteProduct(@PathVariable String productId);
+
+    @PutMapping("/updateProduct/{productId}")
+    ResponseEntity<?> updateProduct(@RequestBody ProductRequest productRequest,@PathVariable String productId);
 
 }
