@@ -4,6 +4,7 @@ import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateUserR
 import com.tcc.mobileAdapter.mobileAdapter.data.user.UserRepository;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 import com.tcc.mobileAdapter.mobileAdapter.exception.AlreadyExistException;
+import com.tcc.mobileAdapter.mobileAdapter.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -16,7 +17,7 @@ public class CreateUserUseCase {
 
     private final UserRepository userRepository;
 
-    public User execute(CreateUserRequest request) throws Exception {
+    public User execute(CreateUserRequest request) throws BaseException {
 
         Assert.hasText(request.getUserName(), "UserName should not be null or empty");
         Assert.hasText(request.getCpf(), "cpf should not be null or empty");
@@ -24,7 +25,7 @@ public class CreateUserUseCase {
         Assert.hasText(request.getEmail(), "Email should not be null or empty");
 
         if (userRepository.findByCpf(request.getCpf()) != null) {
-            throw new AlreadyExistException("Cpf_already_exists");
+            throw new AlreadyExistException("user_already_exists");
         }
 
         User user = User.builder().userName(request.getUserName())
