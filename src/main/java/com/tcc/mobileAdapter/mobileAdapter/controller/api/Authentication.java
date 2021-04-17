@@ -17,6 +17,6 @@ public interface Authentication {
     ResponseEntity<AuthResponse> execute(@RequestBody AuthRequest authRequest);
 
     @PostMapping("/createUser")
-    ResponseEntity<CreateUserResponse> execute(@RequestBody CreateUserRequest createUserRequest);
+    ResponseEntity<?> execute(@RequestBody CreateUserRequest createUserRequest);
 
 }

@@ -13,6 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface InternalAuthentication {
 
     @PostMapping("/login")
-    ResponseEntity<AuthResponse> execute(@RequestBody AuthRequest authRequest);
+    ResponseEntity<?> execute(@RequestBody AuthRequest authRequest);
 
 }

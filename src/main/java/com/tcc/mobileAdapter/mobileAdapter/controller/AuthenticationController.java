@@ -47,12 +47,12 @@ public class AuthenticationController implements Authentication {
     }
 
     @Override
-    public ResponseEntity<CreateUserResponse> execute(CreateUserRequest createUserRequest) {
+    public ResponseEntity<?> execute(CreateUserRequest createUserRequest) {
         User user;
         try {
             user = createUserUseCase.execute(createUserRequest);
         } catch (AlreadyExistException e) {
-            return new ResponseEntity<>(HttpStatus.CONFLICT);
+            return new ResponseEntity<>(e.exceptionErrorMessage(),HttpStatus.CONFLICT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (Exception e) {

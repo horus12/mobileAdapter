@@ -4,6 +4,7 @@ import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.AuthRequest
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.AuthResponse;
 import com.tcc.mobileAdapter.mobileAdapter.data.internaluser.InternalUserRepository;
 import com.tcc.mobileAdapter.mobileAdapter.domain.InternalUser;
+import com.tcc.mobileAdapter.mobileAdapter.exception.BaseException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
@@ -29,7 +30,7 @@ public class InternalAuthenticationUseCase {
                 return AuthResponse.builder().id(user.getId()).build();
             }
         } else {
-            throw new Exception("unauthorized");
+            throw new BaseException("unauthorized");
         }
         return null;
     }
