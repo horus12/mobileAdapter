@@ -28,7 +28,7 @@ public class AuthenticationController implements Authentication {
     private final CreateUserUseCase createUserUseCase;
 
     @Override
-    public ResponseEntity<AuthResponse> execute(AuthRequest authRequest) {
+    public ResponseEntity<AuthResponse> login(AuthRequest authRequest) {
         AuthResponse auth;
         try {
             auth = authenticationUseCase.execute(authRequest);
@@ -47,7 +47,7 @@ public class AuthenticationController implements Authentication {
     }
 
     @Override
-    public ResponseEntity<?> execute(CreateUserRequest createUserRequest) {
+    public ResponseEntity<?> createUser(CreateUserRequest createUserRequest) {
         User user;
         try {
             user = createUserUseCase.execute(createUserRequest);
