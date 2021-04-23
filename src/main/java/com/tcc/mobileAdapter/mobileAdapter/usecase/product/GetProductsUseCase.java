@@ -14,7 +14,7 @@ public class GetProductsUseCase {
 
     private final ProductMongoRepository productRepository;
 
-    public List<Product> execute() throws Exception {
+    public List<Product> execute() {
 
         List<Product> productList = productRepository.findAll();
         if (!productList.isEmpty()) {

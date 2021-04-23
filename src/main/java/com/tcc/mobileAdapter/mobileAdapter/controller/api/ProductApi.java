@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin
-@RequestMapping(path ="/product", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(path ="/product")
 public interface ProductApi {
 
     @PostMapping("/createProduct")
@@ -19,7 +19,7 @@ public interface ProductApi {
     @PutMapping("/updateProduct/{productId}")
     ResponseEntity<?> updateProduct(@RequestBody ProductRequest productRequest,@PathVariable String productId);
 
-    @GetMapping(value = "/products", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/products")
     ResponseEntity<?> getProducts();
 
 }

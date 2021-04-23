@@ -75,12 +75,10 @@ public class ProductController implements ProductApi {
     }
 
     @Override
-    @ResponseBody
     public ResponseEntity<?> getProducts() {
         try {
             List<Product> products = getProductsUseCase.execute();
-            ProductListResponse productListResponse = Translator.translate(products, ProductListResponse.class);
-            return new ResponseEntity<>(productListResponse, HttpStatus.OK);
+            return new ResponseEntity<>(products, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }

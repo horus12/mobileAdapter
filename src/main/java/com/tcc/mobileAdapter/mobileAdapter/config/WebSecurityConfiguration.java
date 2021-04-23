@@ -22,7 +22,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/category/createCategory").permitAll()
                 .antMatchers(HttpMethod.PUT, "/product/updateProduct/*").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/product/deleteProduct/*").permitAll()
-                .antMatchers(HttpMethod.GET, "/products").permitAll()
+                .antMatchers(HttpMethod.GET, "/product/products").permitAll()
                 .antMatchers(HttpMethod.GET, "/category").permitAll()
                 .anyRequest().authenticated();
         http.cors().configurationSource(request -> {
