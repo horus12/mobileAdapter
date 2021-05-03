@@ -4,6 +4,7 @@ import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 @Document(collection = "stock")
@@ -21,8 +22,10 @@ public class Stock {
 
     private int quantity;
 
-    private Date createdDate;
+    private LocalDate createdDate;
 
     private Date dueDate;
+
+    private Double price;
 
 }
