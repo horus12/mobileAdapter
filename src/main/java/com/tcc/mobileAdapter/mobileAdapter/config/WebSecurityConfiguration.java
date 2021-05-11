@@ -28,6 +28,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/stock").permitAll()
                 .antMatchers(HttpMethod.PUT, "/stock/updateStock/*").permitAll()
                 .antMatchers(HttpMethod.DELETE, "/stock/deleteStock/*").permitAll()
+                .antMatchers(HttpMethod.GET, "/catalog/getProducts").permitAll()
                 .anyRequest().authenticated();
         http.cors().configurationSource(request -> {
             CorsConfiguration config = new CorsConfiguration();
