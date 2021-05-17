@@ -9,5 +9,8 @@ public class CategoryRequest {
     private String category;
 
     @NonNull
+    private String imgUrl;
+
+    @NonNull
     private Boolean enabled;
 }

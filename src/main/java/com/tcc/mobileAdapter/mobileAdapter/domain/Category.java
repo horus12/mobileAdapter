@@ -17,5 +17,7 @@ public class Category {
 
     private String category;
 
+    private String imageUrl;
+
     private boolean enabled;
 }

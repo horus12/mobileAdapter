@@ -20,6 +20,7 @@ public class CreateCategoryUseCase {
         }
 
         Category category = Category.builder().category(request.getCategory())
+                .imageUrl(request.getImgUrl())
                 .enabled(request.getEnabled())
                 .build();
         categoryMongoRepository.save(category);
