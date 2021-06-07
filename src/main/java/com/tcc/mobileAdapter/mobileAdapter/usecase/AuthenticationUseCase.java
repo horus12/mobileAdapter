@@ -14,7 +14,7 @@ public class AuthenticationUseCase {
 
     private final UserRepository userRepository;
 
-    public AuthResponse execute(AuthRequest authRequest) throws Exception {
+    public User execute(AuthRequest authRequest) throws Exception {
         Assert.hasText(authRequest.getUserName(), "UserName should not be null or empty");
         Assert.hasText(authRequest.getPassword(), "Password should not be null or empty");
 
@@ -22,7 +22,7 @@ public class AuthenticationUseCase {
 
         if (user != null) {
             if (user.getPassword().equals(authRequest.getPassword())) {
-                return AuthResponse.builder().id(user.getId()).build();
+                return user;
             }
         } else {
             throw new Exception("unauthorized");

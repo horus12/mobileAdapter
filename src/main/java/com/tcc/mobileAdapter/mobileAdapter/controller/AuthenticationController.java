@@ -3,11 +3,8 @@ package com.tcc.mobileAdapter.mobileAdapter.controller;
 import com.tcc.mobileAdapter.mobileAdapter.controller.api.Authentication;
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.AuthRequest;
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateUserRequest;
-import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.AuthResponse;
-import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.CreateUserResponse;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 import com.tcc.mobileAdapter.mobileAdapter.exception.AlreadyExistException;
-import com.tcc.mobileAdapter.mobileAdapter.translator.Translator;
 import com.tcc.mobileAdapter.mobileAdapter.usecase.AuthenticationUseCase;
 import com.tcc.mobileAdapter.mobileAdapter.usecase.CreateUserUseCase;
 import lombok.Data;
@@ -28,10 +25,10 @@ public class AuthenticationController implements Authentication {
     private final CreateUserUseCase createUserUseCase;
 
     @Override
-    public ResponseEntity<AuthResponse> login(AuthRequest authRequest) {
-        AuthResponse auth;
+    public ResponseEntity<User> login(AuthRequest authRequest) {
+        User user;
         try {
-            auth = authenticationUseCase.execute(authRequest);
+            user = authenticationUseCase.execute(authRequest);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         } catch (Exception e) {
@@ -40,8 +37,8 @@ public class AuthenticationController implements Authentication {
             else
                 return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        if (auth != null)
-            return new ResponseEntity<>(Translator.translate(auth, AuthResponse.class), HttpStatus.OK);
+        if (user != null)
+            return new ResponseEntity<>(user, HttpStatus.OK);
         else
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
@@ -59,7 +56,7 @@ public class AuthenticationController implements Authentication {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
         if (user != null) {
-            return new ResponseEntity<>(HttpStatus.OK);
+            return new ResponseEntity<>(user,HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
