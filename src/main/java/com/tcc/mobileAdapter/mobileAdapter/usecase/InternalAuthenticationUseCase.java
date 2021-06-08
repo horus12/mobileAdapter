@@ -27,7 +27,9 @@ public class InternalAuthenticationUseCase {
 
         if (user != null) {
             if (user.getPassword().equals(authRequest.getPassword())) {
-                return AuthResponse.builder().id(user.getId()).build();
+                return AuthResponse.builder().id(user.getId())
+                        .role(user.getRole())
+                        .build();
             }
         } else {
             throw new BaseException("unauthorized");

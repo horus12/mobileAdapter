@@ -11,6 +11,7 @@ import lombok.Setter;
 @Setter
 public class AuthResponse {
     String id;
+    String role;
 
     @Override
     public String toString() {
