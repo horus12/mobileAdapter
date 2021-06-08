@@ -26,6 +26,8 @@ public class Product {
 
     private String defaultImage;
 
+    private String category;
+
     @Nullable
     private List<String> images;
 

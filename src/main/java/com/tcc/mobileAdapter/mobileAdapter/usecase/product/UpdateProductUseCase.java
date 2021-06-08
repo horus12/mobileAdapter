@@ -25,6 +25,7 @@ public class UpdateProductUseCase {
             _product.setImages(request.getImages());
             _product.setEnabled(request.getEnabled());
             _product.setType(request.getType());
+            _product.setCategory(request.getCategory());
 
             productRepository.save(_product);
         } else {

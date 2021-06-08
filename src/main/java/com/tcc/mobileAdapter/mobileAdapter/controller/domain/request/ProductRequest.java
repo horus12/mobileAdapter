@@ -20,6 +20,8 @@ public class ProductRequest {
     @NonNull
     private String type;
 
+    private String category;
+
     @NonNull
     private Boolean enabled;
 

@@ -18,7 +18,7 @@ public class Stock {
     @Id
     private String id;
 
-    private Product product;
+    private String product;
 
     private int quantity;
 

@@ -1,27 +1,37 @@
 package com.tcc.mobileAdapter.mobileAdapter.usecase.stock;
 
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.AvailableProductsResponse;
+import com.tcc.mobileAdapter.mobileAdapter.data.product.ProductMongoRepository;
 import com.tcc.mobileAdapter.mobileAdapter.data.stock.StockMongoRepository;
+import com.tcc.mobileAdapter.mobileAdapter.domain.Product;
 import com.tcc.mobileAdapter.mobileAdapter.domain.Stock;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class GetAvailableStockUseCase {
     private final StockMongoRepository stockMongoRepository;
+    private final ProductMongoRepository productMongoRepository;
 
     public List<AvailableProductsResponse> execute() {
         List<Stock> stockList = stockMongoRepository.findAll();
         List<AvailableProductsResponse> availableProducts = new ArrayList<>();
 
         stockList.forEach(item -> {
-            AvailableProductsResponse a = new AvailableProductsResponse(item.getProduct(), item.getQuantity(), item.getPrice());
-            availableProducts.add(a);
+            Optional<Product> product = productMongoRepository.findById(item.getProduct());
+            if (product.isPresent()) {
+                AvailableProductsResponse a = new AvailableProductsResponse(
+                        product.get(),
+                        item.getQuantity(),
+                        item.getPrice());
+                availableProducts.add(a);
+            }
         });
 
         return availableProducts.stream()

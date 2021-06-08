@@ -28,7 +28,7 @@ public class CreateStockUseCase {
         if (request.getQuantity() <= 0)
             throw new Exception("invalid_quantity");
 
-        Stock stock = Stock.builder().product(product.get())
+        Stock stock = Stock.builder().product(product.get().getId())
                 .quantity(request.getQuantity())
                 .createdDate(LocalDate.now())
                 .dueDate(request.getDueDate())

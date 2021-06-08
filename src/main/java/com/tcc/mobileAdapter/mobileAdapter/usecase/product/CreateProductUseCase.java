@@ -25,6 +25,7 @@ public class CreateProductUseCase {
                 .enabled(request.getEnabled())
                 .images(request.getImages())
                 .type(request.getType())
+                .category(request.getCategory())
                 .build();
         productRepository.save(product);
 
