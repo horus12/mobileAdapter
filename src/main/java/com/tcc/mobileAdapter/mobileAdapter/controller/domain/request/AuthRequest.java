@@ -13,4 +13,7 @@ public class AuthRequest {
 
     @NonNull
     String password;
+
+    @NonNull
+    String role;
 }

@@ -19,7 +19,7 @@ public class InternalAuthenticationUseCase {
         Assert.hasText(authRequest.getUserName(), "UserName should not be null or empty");
         Assert.hasText(authRequest.getPassword(), "Password should not be null or empty");
 
-//        InternalUser iUser = InternalUser.builder().email(authRequest.getUserName()).password(authRequest.getPassword()).build();
+//        InternalUser iUser = InternalUser.builder().email(authRequest.getUserName()).password(authRequest.getPassword()).role(authRequest.getRole()).build();
 //
 //        internalUserRepository.save(iUser);
 
