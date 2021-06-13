@@ -5,8 +5,8 @@ import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.AuthRequest
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateUserRequest;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 import com.tcc.mobileAdapter.mobileAdapter.exception.AlreadyExistException;
-import com.tcc.mobileAdapter.mobileAdapter.usecase.AuthenticationUseCase;
-import com.tcc.mobileAdapter.mobileAdapter.usecase.CreateUserUseCase;
+import com.tcc.mobileAdapter.mobileAdapter.usecase.user.AuthenticationUseCase;
+import com.tcc.mobileAdapter.mobileAdapter.usecase.user.CreateUserUseCase;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

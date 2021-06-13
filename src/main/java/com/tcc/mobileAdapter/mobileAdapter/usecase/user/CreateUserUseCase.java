@@ -1,4 +1,4 @@
-package com.tcc.mobileAdapter.mobileAdapter.usecase;
+package com.tcc.mobileAdapter.mobileAdapter.usecase.user;
 
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateUserRequest;
 import com.tcc.mobileAdapter.mobileAdapter.data.user.UserRepository;
