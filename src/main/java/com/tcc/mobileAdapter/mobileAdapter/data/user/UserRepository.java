@@ -10,6 +10,6 @@ public interface UserRepository {
 
     User findByCpf(String cpf);
 
-    Optional<User> findByUserName(String name);
+    User findByEmail(String email);
 
 }

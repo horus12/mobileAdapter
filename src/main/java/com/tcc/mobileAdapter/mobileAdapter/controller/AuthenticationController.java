@@ -5,6 +5,7 @@ import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.AuthRequest
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateUserRequest;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 import com.tcc.mobileAdapter.mobileAdapter.exception.AlreadyExistException;
+import com.tcc.mobileAdapter.mobileAdapter.exception.BaseException;
 import com.tcc.mobileAdapter.mobileAdapter.usecase.user.AuthenticationUseCase;
 import com.tcc.mobileAdapter.mobileAdapter.usecase.user.CreateUserUseCase;
 import lombok.Data;
@@ -48,7 +49,7 @@ public class AuthenticationController implements Authentication {
         User user;
         try {
             user = createUserUseCase.execute(createUserRequest);
-        } catch (AlreadyExistException e) {
+        } catch (BaseException e) {
             return new ResponseEntity<>(e.exceptionErrorMessage(),HttpStatus.CONFLICT);
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

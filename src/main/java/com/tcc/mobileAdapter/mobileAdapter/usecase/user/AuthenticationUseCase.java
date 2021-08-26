@@ -1,7 +1,6 @@
 package com.tcc.mobileAdapter.mobileAdapter.usecase.user;
 
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.AuthRequest;
-import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.AuthResponse;
 import com.tcc.mobileAdapter.mobileAdapter.data.user.UserRepository;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 import lombok.RequiredArgsConstructor;
@@ -18,7 +17,7 @@ public class AuthenticationUseCase {
         Assert.hasText(authRequest.getUserName(), "UserName should not be null or empty");
         Assert.hasText(authRequest.getPassword(), "Password should not be null or empty");
 
-        User user = userRepository.findByCpf(authRequest.getUserName());
+        User user = userRepository.findByEmail(authRequest.getUserName());
 
         if (user != null) {
             if (user.getPassword().equals(authRequest.getPassword())) {
