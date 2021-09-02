@@ -3,6 +3,7 @@ package com.tcc.mobileAdapter.mobileAdapter.usecase.user;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.UserRecord;
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateUserRequest;
+import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.UserResponse;
 import com.tcc.mobileAdapter.mobileAdapter.data.user.UserRepository;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 import com.tcc.mobileAdapter.mobileAdapter.exception.AlreadyExistException;
@@ -19,7 +20,7 @@ public class CreateUserUseCase {
 
     private final UserRepository userRepository;
 
-    public User execute(CreateUserRequest request) throws BaseException {
+    public UserResponse execute(CreateUserRequest request) throws Exception {
 
         Assert.hasText(request.getUserName(), "UserName should not be null or empty");
         Assert.hasText(request.getCpf(), "cpf should not be null or empty");
@@ -33,14 +34,18 @@ public class CreateUserUseCase {
         if (userRepository.findByEmail(request.getEmail()) != null) {
             throw new AlreadyExistException("user_already_exists");
         }
-
+        UserRecord fUser;
         try {
-            FirebaseAuth.getInstance().createUser(new UserRecord.CreateRequest()
+           fUser = FirebaseAuth.getInstance().createUser(new UserRecord.CreateRequest()
                     .setEmail(request.getEmail())
                     .setPassword(request.getPassword()));
         } catch (Exception e) {
             throw new BaseException(e.getMessage());
         }
+        if(fUser == null)
+            throw new BaseException("no_token");
+
+        String authToken = FirebaseAuth.getInstance().createCustomToken(fUser.getUid());
 
         User user = User.builder().userName(request.getUserName())
                 .contact(request.getContact())
@@ -51,6 +56,6 @@ public class CreateUserUseCase {
                 .build();
         userRepository.save(user);
 
-        return user;
+        return UserResponse.builder().user(user).token(authToken).build();
     }
 }

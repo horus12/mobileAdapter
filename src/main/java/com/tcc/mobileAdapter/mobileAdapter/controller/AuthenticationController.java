@@ -3,6 +3,7 @@ package com.tcc.mobileAdapter.mobileAdapter.controller;
 import com.tcc.mobileAdapter.mobileAdapter.controller.api.Authentication;
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.AuthRequest;
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.CreateUserRequest;
+import com.tcc.mobileAdapter.mobileAdapter.controller.domain.response.UserResponse;
 import com.tcc.mobileAdapter.mobileAdapter.domain.User;
 import com.tcc.mobileAdapter.mobileAdapter.exception.AlreadyExistException;
 import com.tcc.mobileAdapter.mobileAdapter.exception.BaseException;
@@ -26,8 +27,8 @@ public class AuthenticationController implements Authentication {
     private final CreateUserUseCase createUserUseCase;
 
     @Override
-    public ResponseEntity<User> login(AuthRequest authRequest) {
-        User user;
+    public ResponseEntity<UserResponse> login(AuthRequest authRequest) {
+        UserResponse user;
         try {
             user = authenticationUseCase.execute(authRequest);
         } catch (IllegalArgumentException e) {
@@ -46,7 +47,7 @@ public class AuthenticationController implements Authentication {
 
     @Override
     public ResponseEntity<?> createUser(CreateUserRequest createUserRequest) {
-        User user;
+        UserResponse user;
         try {
             user = createUserUseCase.execute(createUserRequest);
         } catch (BaseException e) {
