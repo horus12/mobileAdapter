@@ -3,6 +3,7 @@ package com.tcc.mobileAdapter.mobileAdapter.controller.api;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @CrossOrigin
@@ -10,4 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public interface CatalogApi {
     @GetMapping(value = "/getProducts")
     ResponseEntity<?> getProducts();
+
+    @GetMapping(value = "/getProduct/{productId}")
+    ResponseEntity<?> getProduct(@PathVariable String productId);
 }

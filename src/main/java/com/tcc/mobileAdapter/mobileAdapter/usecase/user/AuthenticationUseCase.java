@@ -27,11 +27,9 @@ public class AuthenticationUseCase {
         if (fUser == null)
             throw new Exception("unauthorized");
 
-        String authToken = FirebaseAuth.getInstance().createCustomToken(fUser.getUid());
-
         if (user != null) {
             if (user.getPassword().equals(authRequest.getPassword())) {
-                return UserResponse.builder().token(authToken).user(user).build();
+                return UserResponse.builder().token(fUser.getUid()).user(user).build();
             }
         } else {
             throw new Exception("unauthorized");
