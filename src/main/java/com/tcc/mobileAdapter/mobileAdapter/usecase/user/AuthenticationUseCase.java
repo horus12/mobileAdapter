@@ -29,7 +29,10 @@ public class AuthenticationUseCase {
 
         if (user != null) {
             if (user.getPassword().equals(authRequest.getPassword())) {
-                return UserResponse.builder().token(fUser.getUid()).user(user).build();
+                return UserResponse.builder()
+                        .token(fUser.getUid())
+                        .user(user)
+                        .build();
             }
         } else {
             throw new Exception("unauthorized");

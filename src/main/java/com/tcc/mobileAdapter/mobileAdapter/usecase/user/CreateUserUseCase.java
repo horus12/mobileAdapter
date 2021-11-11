@@ -36,13 +36,14 @@ public class CreateUserUseCase {
         }
         UserRecord fUser;
         try {
-           fUser = FirebaseAuth.getInstance().createUser(new UserRecord.CreateRequest()
+            fUser = FirebaseAuth.getInstance().createUser(new UserRecord.CreateRequest()
                     .setEmail(request.getEmail())
+                    .setDisplayName(request.getUserName())
                     .setPassword(request.getPassword()));
         } catch (Exception e) {
             throw new BaseException(e.getMessage());
         }
-        if(fUser == null)
+        if (fUser == null)
             throw new BaseException("no_token");
 
         String authToken = FirebaseAuth.getInstance().createCustomToken(fUser.getUid());
@@ -56,6 +57,6 @@ public class CreateUserUseCase {
                 .build();
         userRepository.save(user);
 
-        return UserResponse.builder().user(user).token(authToken).build();
+        return UserResponse.builder().user(user).token(fUser.getUid()).build();
     }
 }
