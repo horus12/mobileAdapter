@@ -14,4 +14,8 @@ public class CreateDeliveryAddressRequest {
     private String cep;
 
     private String district;
+
+    private String city;
+
+    private String state;
 }

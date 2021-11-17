@@ -23,4 +23,10 @@ public class DeliveryAddress {
 
     private String district;
 
+    private String city;
+
+    private String state;
+
+    private String userId;
+
 }

@@ -11,6 +11,6 @@ public interface  DeliveryAddressApi {
     @PostMapping
     ResponseEntity<?> createDeliveryAddress(@RequestBody CreateDeliveryAddressRequest createDeliveryAddressRequest);
 
-    @GetMapping("{userId}")
+    @GetMapping("/{userId}")
     ResponseEntity<?> getDeliveryAddress(@PathVariable String userId);
 }

@@ -17,13 +17,20 @@ public class CreateDeliveryAddress {
     public void execute(CreateDeliveryAddressRequest request) throws Exception {
 
         String email = tokenHelper.execute(request.getUserId());
-        if (email==null) throw new Exception("invalid_token");
+        if (email == null) throw new Exception("invalid_token");
+
+        DeliveryAddress oldAddress = deliveryAddressRepository.findByUserId(request.getUserId());
+
+        if (oldAddress != null) deliveryAddressRepository.delete(oldAddress);
 
         DeliveryAddress deliveryAddress = DeliveryAddress.builder()
                 .district(request.getDistrict())
                 .number(request.getNumber())
                 .street(request.getStreet())
                 .cep(request.getCep())
+                .city(request.getCity())
+                .state(request.getState())
+                .userId(request.getUserId())
                 .build();
 
         deliveryAddressRepository.save(deliveryAddress);
