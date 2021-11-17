@@ -1,5 +1,6 @@
 package com.tcc.mobileAdapter.mobileAdapter.controller.api;
 
+import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.RemoveStockRequest;
 import com.tcc.mobileAdapter.mobileAdapter.controller.domain.request.StockRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,4 +21,6 @@ public interface StockApi {
     @GetMapping
     ResponseEntity<?> getStock();
 
+    @PostMapping("/removeStock")
+    ResponseEntity<?> updateStock(@RequestBody RemoveStockRequest removeStockRequest);
 }
